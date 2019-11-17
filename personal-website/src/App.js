@@ -1,11 +1,26 @@
 import React from 'react';
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+} from "react-router-dom";
 // import logo from './logo.svg';
-import SignInSide from './components/SignInSlide';
+import PrivateRoute from './components/PrivateRoute'
+import SignInSide from './components/login/SignInSlide';
+import Blog from './components/blog/Blog';
 import './App.css';
+
 
 function App() {
   return (
-    <SignInSide/>
+    <Router>
+      <Switch>
+        <Route path="/login" component={SignInSide} />
+        <Route path="/" component={Blog} />
+        <PrivateRoute path="/onlyAuthorizedAllowedHere/" />
+      </Switch>
+    </Router>
+    // <SignInSide/>
     // <div className="App">
     //   <header className="App-header">
     //     <img src={logo} className="App-logo" alt="logo" />
